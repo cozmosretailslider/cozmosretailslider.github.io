@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet"
+		href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<style>
+		img {
+			width: 100%;
+		}
+
+		.height {
+			height: 10px;
+		}
+
+		/* Image-container design */
+		.image-container {
+			max-width: 800px;
+			position: relative;
+			margin: auto;
+		}
+
+		.next {
+			right: 0;
+		}
+
+		/* Next and previous icon design */
+		.previous,
+		.next {
+			cursor: pointer;
+			position: absolute;
+			top: 50%;
+			padding: 10px;
+			margin-top: -25px;
+		}
+
+		/* caption decorate */
+		.captionText {
+			color: #000000;
+			font-size: 14px;
+			position: absolute;
+			padding: 12px 12px;
+			bottom: 8px;
+			width: 100%;
+			text-align: center;
+		}
+
+		.fa {
+			font-size: 32px;
+		}
+
+		.fa:hover {
+			transform: rotate(360deg);
+			transition: 1s;
+			color: white;
+		}
+
+		.footerdot {
+			cursor: pointer;
+			height: 15px;
+			width: 15px;
+			margin: 0 2px;
+			background-color: #bbbbbb;
+			border-radius: 50%;
+			display: inline-block;
+			transition: background-color 0.5s ease;
+		}
+
+		.active,
+		.footerdot:hover {
+			background-color: black;
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Image container of the image slider -->
+	<div class="image-container">
+		<div class="slide">
+			<div class="slideNumber">1</div>
+			<img src=
+"https://res.cloudinary.com/dcj8tkmi3/image/upload/v1702081802/of7obbh6lwwyapbgxwxc.png">
+		</div>
+		<div class="slide">
+			<div class="slideNumber">2</div>
+			<img src=
+"https://res.cloudinary.com/dcj8tkmi3/image/upload/v1702081802/cz7lix47vu8gu90gv5jl.png">
+		</div>
+		<div class="slide">
+			<div class="slideNumber">3</div>
+			<img src=
+"https://res.cloudinary.com/dcj8tkmi3/image/upload/v1702081802/pmatvu2ats3yns4pcwau.png">
+		</div>
+		<div class="slide">
+			<div class="slideNumber">4</div>
+			<img src=
+"https://res.cloudinary.com/dcj8tkmi3/image/upload/v1702081802/yughp1q5bxeyflclgnh9.png">
+		</div>
+	</div>
+	<br>
+
+	<div style="text-align:center">
+		<span class="footerdot" onclick="activeSlide(1)">
+		</span>
+		<span class="footerdot" onclick="activeSlide(2)">
+		</span>
+		<span class="footerdot" onclick="activeSlide(3)">
+		</span>
+        <span class="footerdot" onclick="activeSlide(4)">
+        </span>
+	</div>
+
+	<script>
+		let slideIndex = 1;
+		displaySlide(slideIndex);
+
+		function moveSlides(n) {
+			displaySlide(slideIndex += n);
+		}
+
+		/* Main function */
+		function displaySlide(n) {
+			let i;
+			let totalslides =
+				document.getElementsByClassName("slide");
+
+			let totaldots =
+				document.getElementsByClassName("footerdot");
+
+			if (n > totalslides.length) {
+				slideIndex = 1;
+			}
+			if (n < 1) {
+				slideIndex = totalslides.length;
+			}
+			for (i = 0; i < totalslides.length; i++) {
+				totalslides[i].style.display = "none";
+			}
+			for (i = 0; i < totaldots.length; i++) {
+				totaldots[i].className =
+					totaldots[i].className.replace(" active", "");
+			}
+			totalslides[slideIndex - 1].style.display = "block";
+			totaldots[slideIndex - 1].className += " active";
+		}
+        var intervalId = window.setInterval(function(){
+            moveSlides(1)
+        }, 5000);
+		function activeSlide(n) {
+			displaySlide(slideIndex = n);
+            clearInterval(intervalId) 
+		}
+	</script>
+</body>
+
+</html>
