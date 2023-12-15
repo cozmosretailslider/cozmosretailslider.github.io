@@ -62,8 +62,8 @@
 
 		.footerdot {
 			cursor: pointer;
-			height: 15px;
-			width: 15px;
+			height: 8px;
+			width: 8px;
 			margin: 0 2px;
 			background-color: #bbbbbb;
 			border-radius: 50%;
@@ -184,7 +184,7 @@
 			<div class="slideNumber">15</div>
 			<a target="_parent" href="https://www.cozmosretail.com/events">
 			<img src=
-"https://res.cloudinary.com/dcj8tkmi3/image/upload/v1702659554/meziv8f0qmm6aozmmlkq.png">
+"https://res.cloudinary.com/dcj8tkmi3/image/upload/v1702681834/zqgeacaqvpipjvemo1ri.png">
 			</a>
 		</div>
 	</div>
@@ -258,10 +258,13 @@
 		}
         var intervalId = window.setInterval(function(){
             moveSlides(1)
-        }, 5000);
+        }, 2500);
 		function activeSlide(n) {
 			displaySlide(slideIndex = n);
             clearInterval(intervalId) 
+			intervalId = window.setInterval(function(){
+				moveSlides(1)
+			}, 2500)
 		}
 	</script>
 </body>
